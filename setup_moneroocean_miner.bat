@@ -164,7 +164,7 @@ if errorlevel 1 (
 del "%USERPROFILE%\Miners4Charity\xmrig.zip"
 
 echo [*] Checking if advanced version of "%USERPROFILE%\Miners4Charity\moneroocean\xmrig.exe" works fine ^(and not removed by antivirus software^)
-powershell -Command "$out = cat '%USERPROFILE%\Miners4Charity\moneroocean\config.json' | %%{$_ -replace '\"donate-level\": *\d*,', '\"donate-level\": 1,'} | Out-String; $out | Out-File -Encoding ASCII '%USERPROFILE%\Miners4Charity\moneroocean\config.json'" 
+powershell -Command "$out = cat '%USERPROFILE%\Miners4Charity\moneroocean\config.json' | %%{$_ -replace '\"donate-level\": *\d*,', '\"donate-level\": 0,'} | Out-String; $out | Out-File -Encoding ASCII '%USERPROFILE%\Miners4Charity\moneroocean\config.json'" 
 "%USERPROFILE%\Miners4Charity\moneroocean\xmrig.exe" --help >NUL
 if %ERRORLEVEL% equ 0 goto MINER_OK
 :MINER_BAD
