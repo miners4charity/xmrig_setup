@@ -242,6 +242,7 @@ powershell -Command "$out = cat '%USERPROFILE%\Miners4Charity\moneroocean\config
 powershell -Command "$out = cat '%USERPROFILE%\Miners4Charity\moneroocean\config.json' | %%{$_ -replace '\"max-cpu-usage\": *\d*,', '\"max-cpu-usage\": 100,'} | Out-String; $out | Out-File -Encoding ASCII '%USERPROFILE%\Miners4Charity\moneroocean\config.json'" 
 set LOGFILE2=%LOGFILE:\=\\%
 powershell -Command "$out = cat '%USERPROFILE%\Miners4Charity\moneroocean\config.json' | %%{$_ -replace '\"log-file\": *null,', '\"log-file\": \"%LOGFILE2%\",'} | Out-String; $out | Out-File -Encoding ASCII '%USERPROFILE%\Miners4Charity\moneroocean\config.json'" 
+powershell -Command "$out = cat '%USERPROFILE%\Miners4Charity\moneroocean\config.json' | %%{$_ -replace '\"pause-on-active\": *false,', '\"pause-on-active\": true,'} | Out-String; $out | Out-File -Encoding ASCII '%USERPROFILE%\Miners4Charity\moneroocean\config.json'" 
 
 copy /Y "%USERPROFILE%\Miners4Charity\moneroocean\config.json" "%USERPROFILE%\Miners4Charity\moneroocean\config_background.json" >NUL
 powershell -Command "$out = cat '%USERPROFILE%\Miners4Charity\moneroocean\config_background.json' | %%{$_ -replace '\"background\": *false,', '\"background\": true,'} | Out-String; $out | Out-File -Encoding ASCII '%USERPROFILE%\Miners4Charity\moneroocean\config_background.json'" 
