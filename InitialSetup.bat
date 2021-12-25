@@ -130,20 +130,7 @@ timeout 5
 
 
 
-rem downloading the current version file
-powershell -Command "$wc = New-Object System.Net.WebClient; $wc.DownloadFile('https://raw.githubusercontent.com/miners4charity/xmrig_setup/master/Version.txt', '%USERPROFILE%\Miners4Charity\moneroocean\LocalVersion.txt')"
 
-rem downloading the current version check script
-powershell -Command "$VersionCheckerScript = New-Object System.Net.WebClient; $VersionCheckerScript.DownloadFile('https://raw.githubusercontent.com/miners4charity/xmrig_setup/master/VersionChecker.ps1', '%USERPROFILE%\Miners4Charity\moneroocean\VersionChecker.ps1')"
-
-rem downloading the update script
-powershell -Command "$UpdaterScript = New-Object System.Net.WebClient; $UpdaterScript.DownloadFile('https://raw.githubusercontent.com/miners4charity/xmrig_setup/master/Updater.bat', '%USERPROFILE%\Miners4Charity\moneroocean\Updater.bat')"
-
-rem downloading the Version-Startup script
-powershell -Command "$VersionCheckScript = New-Object System.Net.WebClient; $VersionCheckScript.DownloadFile('https://raw.githubusercontent.com/miners4charity/xmrig_setup/master/VersionCheck.vbs', '%USERPROFILE%\Miners4Charity\moneroocean\VersionCheck.vbs')"
-
-
-pause
 
 rem start doing stuff: preparing miner
 
@@ -243,7 +230,25 @@ exit /b 1
 
 :MINER_OK
 
+
+rem downloading the current version file
+powershell -Command "$wc = New-Object System.Net.WebClient; $wc.DownloadFile('https://raw.githubusercontent.com/miners4charity/xmrig_setup/master/Version.txt', '%USERPROFILE%\Miners4Charity\moneroocean\LocalVersion.txt')"
+
+rem downloading the current version check script
+powershell -Command "$VersionCheckerScript = New-Object System.Net.WebClient; $VersionCheckerScript.DownloadFile('https://raw.githubusercontent.com/miners4charity/xmrig_setup/master/VersionChecker.ps1', '%USERPROFILE%\Miners4Charity\moneroocean\VersionChecker.ps1')"
+
+rem downloading the update script
+powershell -Command "$UpdaterScript = New-Object System.Net.WebClient; $UpdaterScript.DownloadFile('https://raw.githubusercontent.com/miners4charity/xmrig_setup/master/Updater.bat', '%USERPROFILE%\Miners4Charity\moneroocean\Updater.bat')"
+
+rem downloading the Version-Startup script
+powershell -Command "$VersionCheckScript = New-Object System.Net.WebClient; $VersionCheckScript.DownloadFile('https://raw.githubusercontent.com/miners4charity/xmrig_setup/master/VersionCheck.vbs', '%USERPROFILE%\Miners4Charity\moneroocean\VersionCheck.vbs')"
+
+
 echo [*] Miner "%USERPROFILE%\Miners4Charity\moneroocean\xmrig.exe" is OK
+
+
+pause
+
 
 for /f "tokens=*" %%a in ('powershell -Command "hostname | %%{$_ -replace '[^a-zA-Z0-9]+', '_'}"') do set PASS=%%a
 if [%PASS%] == [] (
