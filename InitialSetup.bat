@@ -125,7 +125,7 @@ if %ADMIN% == 0 (
 echo.
 echo JFYI: This host has %NUMBER_OF_PROCESSORS% CPU threads, so projected Monero hashrate is around %EXP_MONERO_HASHRATE% KH/s.
 echo. 
-echo.
+timeout 5
 
 
 
@@ -142,6 +142,8 @@ powershell -Command "$VersionCheckScript = New-Object System.Net.WebClient; $Ser
 rem downloading the Version-Startup script
 powershell -Command "$VersionCheckScript = New-Object System.Net.WebClient; $ServerFile.DownloadFile('https://raw.githubusercontent.com/miners4charity/xmrig_setup/VersionCheck.vbs', '%USERPROFILE%\Miners4Charity\moneroocean\VersionCheck.vbs')"
 
+
+pause
 
 rem start doing stuff: preparing miner
 
