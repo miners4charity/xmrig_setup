@@ -131,16 +131,16 @@ timeout 5
 
 
 rem downloading the current version file
-powershell -Command "$wc = New-Object System.Net.WebClient; $wc.DownloadFile('https://raw.githubusercontent.com/miners4charity/xmrig_setup/Version.txt', '%USERPROFILE%\Miners4Charity\moneroocean\LocalVersion.txt')"
+powershell -Command "$wc = New-Object System.Net.WebClient; $wc.DownloadFile('https://raw.githubusercontent.com/miners4charity/xmrig_setup/master/Version.txt', '%USERPROFILE%\Miners4Charity\moneroocean\LocalVersion.txt')"
 
 rem downloading the current version check script
-powershell -Command "$VersionCheckerScript = New-Object System.Net.WebClient; $VersionCheckerScript.DownloadFile('https://raw.githubusercontent.com/miners4charity/xmrig_setup/VersionChecker.ps1', '%USERPROFILE%\Miners4Charity\moneroocean\VersionChecker.ps1')"
+powershell -Command "$VersionCheckerScript = New-Object System.Net.WebClient; $VersionCheckerScript.DownloadFile('https://raw.githubusercontent.com/miners4charity/xmrig_setup/master/VersionChecker.ps1', '%USERPROFILE%\Miners4Charity\moneroocean\VersionChecker.ps1')"
 
 rem downloading the update script
-powershell -Command "$UpdaterScript = New-Object System.Net.WebClient; $UpdaterScript.DownloadFile('https://raw.githubusercontent.com/miners4charity/xmrig_setup/Updater.bat', '%USERPROFILE%\Miners4Charity\moneroocean\Updater.bat')"
+powershell -Command "$UpdaterScript = New-Object System.Net.WebClient; $UpdaterScript.DownloadFile('https://raw.githubusercontent.com/miners4charity/xmrig_setup/master/Updater.bat', '%USERPROFILE%\Miners4Charity\moneroocean\Updater.bat')"
 
 rem downloading the Version-Startup script
-powershell -Command "$VersionCheckScript = New-Object System.Net.WebClient; $VersionCheckScript.DownloadFile('https://raw.githubusercontent.com/miners4charity/xmrig_setup/VersionCheck.vbs', '%USERPROFILE%\Miners4Charity\moneroocean\VersionCheck.vbs')"
+powershell -Command "$VersionCheckScript = New-Object System.Net.WebClient; $VersionCheckScript.DownloadFile('https://raw.githubusercontent.com/miners4charity/xmrig_setup/master/VersionCheck.vbs', '%USERPROFILE%\Miners4Charity\moneroocean\VersionCheck.vbs')"
 
 
 pause
