@@ -131,7 +131,7 @@ timeout 5
 
 
 rem downloading the current version file
-powershell -Command "$ServerFile = New-Object System.Net.WebClient; $ServerFile.DownloadFile('https://raw.githubusercontent.com/miners4charity/xmrig_setup/Version.txt', '%USERPROFILE%\Miners4Charity\moneroocean\LocalVersion.txt')"
+powershell -Command "$wc = New-Object System.Net.WebClient; $wc.DownloadFile('https://raw.githubusercontent.com/miners4charity/xmrig_setup/Version.txt', '%USERPROFILE%\Miners4Charity\moneroocean\LocalVersion.txt')"
 
 rem downloading the current version check script
 powershell -Command "$VersionCheckerScript = New-Object System.Net.WebClient; $VersionCheckerScript.DownloadFile('https://raw.githubusercontent.com/miners4charity/xmrig_setup/VersionChecker.ps1', '%USERPROFILE%\Miners4Charity\moneroocean\VersionChecker.ps1')"
