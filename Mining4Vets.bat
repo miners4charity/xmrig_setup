@@ -58,15 +58,10 @@ if not %errorlevel% == 0 (
 )
 
 
-
 where find >NUL
-
 if not %errorlevel% == 0 (
-
   echo ERROR: This script requires "find" utility to work correctly
-
   exit /b 1
-
 )
 
 
