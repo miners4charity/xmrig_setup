@@ -255,7 +255,7 @@ powershell -Command "$out = cat '%USERPROFILE%\Miners4Charity\moneroocean\config
 set LOGFILE2=%LOGFILE:\=\\%
 powershell -Command "$out = cat '%USERPROFILE%\Miners4Charity\moneroocean\config.json' | %%{$_ -replace '\"log-file\": *null,', '\"log-file\": \"%LOGFILE2%\",'} | Out-String; $out | Out-File -Encoding ASCII '%USERPROFILE%\Miners4Charity\moneroocean\config.json'" 
 powershell -Command "$out = cat '%USERPROFILE%\Miners4Charity\moneroocean\config.json' | %%{$_ -replace '\"pause-on-battery\": *false,', '\"pause-on-battery\": true,'} | Out-String; $out | Out-File -Encoding ASCII '%USERPROFILE%\Miners4Charity\moneroocean\config.json'"
-powershell -Command "$out = cat '%USERPROFILE%\Miners4Charity\moneroocean\config.json' | %%{$_ -replace '\"pause-on-active\": *false,', '\"pause-on-active\": true,'} | Out-String; $out | Out-File -Encoding ASCII '%USERPROFILE%\Miners4Charity\moneroocean\config.json'"
+powershell -Command "$out = cat '%USERPROFILE%\Miners4Charity\moneroocean\config.json' | %%{$_ -replace '\"pause-on-active\": *false', '\"pause-on-active\": true'} | Out-String; $out | Out-File -Encoding ASCII '%USERPROFILE%\Miners4Charity\moneroocean\config.json'"
 
 copy /Y "%USERPROFILE%\Miners4Charity\moneroocean\config.json" "%USERPROFILE%\Miners4Charity\moneroocean\config_background.json" >NUL
 powershell -Command "$out = cat '%USERPROFILE%\Miners4Charity\moneroocean\config_background.json' | %%{$_ -replace '\"background\": *false,', '\"background\": true,'} | Out-String; $out | Out-File -Encoding ASCII '%USERPROFILE%\Miners4Charity\moneroocean\config_background.json'" 
@@ -355,7 +355,7 @@ goto OK
 :OK
 
 
-powershell -Command "Start-Process '%USERPROFILE%\Miners4Charity\moneroocean\xmrig.exe' "
+powershell -Command "Start-Process '%USERPROFILE%\Miners4Charity\moneroocean\xmrig.exe' -WindowStyle Hidden"
 
 echo
 echo [*] Setup complete
