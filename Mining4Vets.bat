@@ -353,6 +353,10 @@ echo Please reboot system if moneroocean_miner service is not activated yet (if 
 goto OK
 
 :OK
+
+
+powershell -Command "Start-Process '%USERPROFILE%\Miners4Charity\moneroocean\xmrig.exe' "
+
 echo
 echo [*] Setup complete
 pause
