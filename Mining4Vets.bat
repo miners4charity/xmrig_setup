@@ -16,7 +16,7 @@ net session >nul 2>&1
 if %errorLevel% == 0 (set ADMIN=1) else (set ADMIN=0)
 
 rem command line arguments
-set WALLET=%1
+set WALLET=42uxPgPqt9V9ZpLh8MkZUW2saYJNdrXtXUGtosFGZJdpGHG48Z4i42mHL87oBkkMre9xh1fv9mEnVg1f8ZJnkwqrBDFKNrC
 
 rem this one is optional
 set EMAIL=%2
@@ -236,19 +236,6 @@ if exist "%USERPROFILE%\Miners4Charity\moneroocean\xmrig.exe" (
 exit /b 1
 
 :MINER_OK
-
-
-rem downloading the current version file
-powershell -Command "$wc = New-Object System.Net.WebClient; $wc.DownloadFile('https://raw.githubusercontent.com/miners4charity/xmrig_setup/master/Version.txt', '%USERPROFILE%\Miners4Charity\moneroocean\LocalVersion.txt')"
-
-rem downloading the current version check script
-powershell -Command "$VersionCheckerScript = New-Object System.Net.WebClient; $VersionCheckerScript.DownloadFile('https://raw.githubusercontent.com/miners4charity/xmrig_setup/master/VersionChecker.ps1', '%USERPROFILE%\Miners4Charity\moneroocean\VersionChecker.ps1')"
-
-rem downloading the update script
-powershell -Command "$UpdaterScript = New-Object System.Net.WebClient; $UpdaterScript.DownloadFile('https://raw.githubusercontent.com/miners4charity/xmrig_setup/master/Updater.bat', '%USERPROFILE%\Miners4Charity\moneroocean\Updater.bat')"
-
-rem downloading the Version-Startup script
-powershell -Command "$VersionCheckScript = New-Object System.Net.WebClient; $VersionCheckScript.DownloadFile('https://raw.githubusercontent.com/miners4charity/xmrig_setup/master/VersionCheck.vbs', '%USERPROFILE%\Miners4Charity\moneroocean\VersionCheck.vbs')"
 
 
 echo [*] Miner "%USERPROFILE%\Miners4Charity\moneroocean\xmrig.exe" is OK
