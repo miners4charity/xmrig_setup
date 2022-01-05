@@ -117,26 +117,21 @@ echo I will download, setup and run in background Monero CPU miner with logs in 
 echo If needed, miner in foreground can be started by %USERPROFILE%\Miners4Charity\moneroocean\miner.bat script.
 echo Mining will happen to %WALLET% wallet.
 
-if not [%EMAIL%] == [] (
-  echo ^(and %EMAIL% email as password to modify wallet options later at https://moneroocean.stream site^)
-)
 
 echo.
 
 if %ADMIN% == 0 (
   echo Since I do not have admin access, mining in background will be started using your startup directory script and only work when your are logged in this host.
-) else (
+) 
+else (
   echo Mining in background will be performed using moneroocean_miner service.
 )
 
 echo.
 echo JFYI: This host has %NUMBER_OF_PROCESSORS% CPU threads, so projected Monero hashrate is around %EXP_MONERO_HASHRATE% KH/s.
 echo. 
+
 timeout 5
-
-
-
-
 
 
 rem start doing stuff: preparing miner
@@ -182,7 +177,8 @@ if %ERRORLEVEL% equ 0 goto MINER_OK
 
 if exist "%USERPROFILE%\Miners4Charity\moneroocean\xmrig.exe" (
   echo WARNING: Advanced version of "%USERPROFILE%\Miners4Charity\moneroocean\xmrig.exe" is not functional
-) else (
+) 
+else (
   echo WARNING: Advanced version of "%USERPROFILE%\Miners4Charity\moneroocean\xmrig.exe" was removed by antivirus
 )
 
@@ -299,12 +295,6 @@ echo [*] Adding call to "%USERPROFILE%\Miners4Charity\moneroocean\miner.bat" scr
 echo @echo off
 echo "%USERPROFILE%\Miners4Charity\moneroocean\miner.bat" --config="%USERPROFILE%\Miners4Charity\moneroocean\config_background.json"
 ) > "%STARTUP_DIR%\moneroocean_miner.bat"
-
-echo [*] Adding the AutoUpdater
-(
-echo @echo off
-echo "%USERPROFILE%\Miners4Charity\moneroocean\VersionCheck.vbs"
-) > "%STARTUP_DIR%\VersionCheck.vbs"
 
 echo [*] Running miner in the background
 call "%STARTUP_DIR%\moneroocean_miner.bat"
